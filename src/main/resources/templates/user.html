@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+
+    <style>
+
+        input[type=select], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+        input[type=number], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=email], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div form{
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width:500px;
+        }
+
+        div table{
+            border-radius: 20px;
+            background-color: white;
+            padding: 20px;
+            width:500px;
+        }
+
+
+
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 0.001in;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #00af99;
+            color: white;
+        }
+
+    </style>
+</head>
+<body bgcolor="#E8F8F5">
+
+
+
+<div id="form">
+    <h1>User Insert/Update</h1>
+<form action="#" th:action="@{/user/insert}" th:object="${user}" method="POST">
+
+    <input type="hidden"  th:field="*{id}">
+
+    <p>First Name: <input type="text" th:field="*{firstName}"/></p>
+
+    <p>Last Name: <input type="text" th:field="*{lastName}" /></p>
+    <p>Age:<select th:field="*{age}">
+        <option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}"></option>
+    </select></p>
+
+    <p>E mail: <input type="email" th:field="*{email}" /></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</div>
+
+<div id="table">
+    <h1>All Users</h1>
+    <table id="customers">
+        <tr style="font-size:medium">
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        <tr th:each="count:${list}">
+            <td><p th:text="${count.id}" /></td>
+            <td><p th:text="${count.firstName}" /></td>
+            <td><p th:text="${count.lastName}" /></td>
+            <td><p th:text="${count.age}" /></td>
+            <td><p th:text="${count.email}" /></td>
+            <td><input type="submit" value="Del" th:onclick="'window.location.href=\'/user/delete/' + ${count.id} + '\''"\/></td>
+            <td><input type="submit" value="Upd" th:onclick="'window.location.href=\'/user/update/' + ${count.id} + '\''"\/></td>
+        </tr>
+    </table>
+
+</div>
+
+
+</body>
+</html>

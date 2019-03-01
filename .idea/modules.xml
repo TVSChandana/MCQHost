@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gproject.iml" filepath="$PROJECT_DIR$/gproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gproject_main.iml" filepath="$PROJECT_DIR$/.idea/modules/gproject_main.iml" group="gproject" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gproject_test.iml" filepath="$PROJECT_DIR$/.idea/modules/gproject_test.iml" group="gproject" />
+    </modules>
+  </component>
+</project>
