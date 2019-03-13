@@ -33,7 +33,7 @@ public class MyController {
         list= userServices.findAllUsers();
         model.addAttribute("user",user);
         model.addAttribute("list",list);
-        return new ModelAndView("infor");
+        return new ModelAndView("user");
 
 
     }
