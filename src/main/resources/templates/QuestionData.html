@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+
+<body>
+
+
+<h1>Question Data</h1>
+<form action="#" th:action="@{/question/insertQuestionData}" th:object="${questionData}" method="POST">
+
+    <p>UserID: <input type="text" th:field="*{userID}" /></p>
+
+    <p>SetID: <input type="text" th:field="*{setID}" /></p>
+
+    <p>Number Of Questions: <input type="text" th:field="*{numberOfQuestions}" /></p>
+
+    <p><input type="submit" value="Submit" /></p>
+
+</form>
+
+</body>
+</html>
