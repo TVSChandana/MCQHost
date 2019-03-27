@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="../static/css/style1.css" th:href="@{/css/style1.css}" rel="stylesheet" />
+
+    <title>Welcome home page</title>
+
+    <style>
+        a {
+            cursor: pointer;
+          }
+
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <div id="header">
+        <div id="logo">
+            <div id="logo_text">
+                <!-- class="logo_colour", allows you to change the colour of the text -->
+                <h1><a href="login.html"><span class="logo_colour"></span></a></h1>
+                <h2></h2>
+            </div>
+        </div>
+        <div id="menubar">
+            <ul id="menu">
+                <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                <li class="selected"><a th:href="@{/user/Logdata}">Home</a></li>
+                <li><a onclick="document.getElementById('id01').style.display='block'">Sign in</a></li>
+                <li><a onclick="document.getElementById('id02').style.display='block'">Sign up</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="site_content">
+        <div class="sidebar">
+            <h1>Latest News</h1>
+            <h4>New Website Launched</h4>
+            <h5>January 1st, 2010</h5>
+            <p>2010 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
+            <h1>Useful Links</h1>
+            <ul>
+                <li><a href="#">link 1</a></li>
+                <li><a href="#">link 2</a></li>
+                <li><a href="#">link 3</a></li>
+                <li><a href="#">link 4</a></li>
+            </ul>
+            <h1>Search</h1>
+            <form method="post" action="#" id="search_form">
+                <p>
+                    <input class="search" type="text" name="search_field" value="Enter keywords....." />
+                    <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" th:src="@{/images/search.png}" src="../images/search.png" alt="Search" title="Search" />
+                </p>
+            </form>
+        </div>
+        <div id="content">
+            <h1>Welcome to the night_sky_2 template</h1>
+            <p>This standards compliant, simple, fixed width website template is released as an 'open source' design (under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 Licence</a>), which means that you are free to download and use it for anything you want (including modifying and amending it). All I ask is that you leave the 'design from HTML5webtemplates.co.uk' link in the footer of the template, but other than that...</p>
+            <p>This template is written entirely in <strong>HTML5</strong> and <strong>CSS</strong>, and can be validated using the links in the footer.</p>
+            <p>You can view more free HTML5 web templates <a href="http://www.html5webtemplates.co.uk">here</a>.</p>
+            <p>This template is a fully functional 5 page website, with an <a href="examples.html">examples</a> page that gives examples of all the styles available with this design.</p>
+            <h2>Browser Compatibility</h2>
+            <p>This template has been tested in the following browsers:</p>
+            <ul>
+                <li>Internet Explorer 8</li>
+                <li>FireFox 3</li>
+                <li>Google Chrome 13</li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <p><a href="index.html">Home</a> | <a href="examples.html">Examples</a> | <a href="page.html">A Page</a> | <a href="another_page.html">Another Page</a> | <a href="contact.html">Contact Us</a></p>
+        <p>Copyright &copy; night_sky_2 | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Website templates</a></p>
+    </div>
+</div>
+
+
+<div id="id01" class="modal">
+
+    <form class="modal-content animate"action="#" th:action="@{/user/login}" th:object="${user}" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="https://www.inwhatlanguage.com/wp-content/uploads/2017/01/Project-Manager-01.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label ><b>User Name: </b></label>
+            <input type="text" th:field="*{username}" />
+
+            <label ><b>Password</b></label>
+            <input type="text" th:field="*{password}" />
+
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+<div id="id02" class="modal">
+
+    <form class="modal-content animate"action="#" th:action="@{/user/register}" th:object="${user}" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="https://www.inwhatlanguage.com/wp-content/uploads/2017/01/Project-Manager-01.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label ><b>First Name: </b></label>
+            <input type="text" th:field="*{firstName}" />
+
+            <label ><b>Last Name: </b></label>
+            <input type="text" th:field="*{lastName}" />
+
+
+            <label ><b>User Name: </b></label>
+            <input type="text" th:field="*{username}" />
+
+            <label ><b>Email: </b></label>
+            <input type="text" th:field="*{email}" />
+
+
+            <label ><b>Password: </b></label>
+            <input type="text" th:field="*{password}" />
+
+            <label ><b>Confirm Password: </b></label>
+            <input type="text" th:field="*{conPassword}" />
+
+            <button type="submit">Sign Up</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+
+    var modal2 = document.getElementById('id02');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

@@ -7,10 +7,10 @@
 <body>
 
 
-    <h1>Question Data</h1>
+    <h1>Question</h1>
     <form action="#" th:action="@{/question/insertQuestion}" th:object="${question}" method="POST">
 
-        <p>Question No: <input type="text" th:field="*{question_No}" /></p>
+        <!--<p>Question No: <input type="text" th:field="*{question_No}" /></p>-->
 
         <p>Question: <input type="text" th:field="*{quest}" /></p>
 

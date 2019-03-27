@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-@RequestMapping("/question")
+//@RequestMapping("/question")
 public class QuestionController {
 
         @Autowired

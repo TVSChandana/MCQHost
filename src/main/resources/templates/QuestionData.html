@@ -7,7 +7,7 @@
 <body>
 
 
-<h1>Question Data</h1>
+<h1>Question</h1>
 <form action="#" th:action="@{/question/insertQuestionData}" th:object="${questionData}" method="POST">
 
     <p>UserID: <input type="text" th:field="*{userID}" /></p>
@@ -16,7 +16,7 @@
 
     <p>Number Of Questions: <input type="text" th:field="*{numberOfQuestions}" /></p>
 
-    <p><input type="submit" value="Submit" /></p>
+    <p><input type="submit" value="Next" /></p>
 
 </form>
 

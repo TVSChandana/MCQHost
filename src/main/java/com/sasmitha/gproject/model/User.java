@@ -18,12 +18,41 @@ public class User {
     @Column(name = "last_name")
     private  String lastName;
 
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "email")
     private String email;
 
+    public String getConPassword() {
+        return conPassword;
+    }
+
+    public void setConPassword(String conPassword) {
+        this.conPassword = conPassword;
+    }
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "confirm_password")
+    private String conPassword;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -47,14 +76,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public String getEmail() {
