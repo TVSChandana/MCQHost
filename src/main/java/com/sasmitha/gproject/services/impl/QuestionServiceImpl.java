@@ -8,6 +8,8 @@ import com.sasmitha.gproject.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
@@ -25,6 +27,13 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public void saveQuestionData(QuestionData questionData) {
         questionDataRepository.save(questionData);
+
+    }
+
+    @Override
+    public List<QuestionData> getLoggedUserQuestioData(String userName) {
+        List<QuestionData> list=questionDataRepository.getLoggedUserQuestioData(userName);
+        return list;
 
     }
 }

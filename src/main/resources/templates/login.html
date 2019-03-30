@@ -1,84 +1,178 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Page Title -->
+    <title>Comport</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+    <!-- CSS Files -->
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
-    <link href="../static/css/style1.css" th:href="@{/css/style1.css}" rel="stylesheet" />
+    <link href="../static/css/font-awesome-4.7.0.min.css" th:href="@{/css/font-awesome-4.7.0.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/fonts/flat-icon/flaticon.css">
+    <link href="../static/css/bootstrap-4.1.3.min.css" th:href="@{/css/bootstrap-4.1.3.min.css}" rel="stylesheet" />
+    <link href="../static/css/owl-carousel.min.css" th:href="@{/css/owl-carousel.min.css}" rel="stylesheet" />
+    <link href="../static/css/nice-select.css" th:href="@{/css/nice-select.css}" rel="stylesheet" />
+    <link href="../static/css/animate-3.7.0.css" th:href="@{/css/animate-3.7.0.css}" rel="stylesheet" />
+    <link href="../static/css/logstyle.css" th:href="@{/css/logstyle.css}" rel="stylesheet" />
+
+    <!--<link rel="stylesheet" href="../static/css/style.css">-->
 
     <title>Welcome home page</title>
 
-    <style>
-        a {
-            cursor: pointer;
-          }
 
-    </style>
 </head>
 <body>
 
-<div id="main">
-    <div id="header">
-        <div id="logo">
-            <div id="logo_text">
-                <!-- class="logo_colour", allows you to change the colour of the text -->
-                <h1><a href="login.html"><span class="logo_colour"></span></a></h1>
-                <h2></h2>
+<!-- Preloader Starts -->
+<div class="preloader">
+    <div class="spinner"></div>
+</div>
+<!-- Preloader End -->
+
+<!-- Header Area Starts -->
+<header class="header-area main-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="logo-area">
+                    <a href="index.html"><img src="../static/images/logo.png" th:src="@{/images/logo.png}" alt="logo"></a>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="custom-navbar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="main-menu">
+                    <ul>
+                        <li class="active"><a th:href="@{/user/Logdata}">home</a></li>
+                        <li><a href="about.html">about us</a></li>
+                        <li><a href="job-category.html">category</a></li>
+                        <li><a href="#">blog</a>
+                            <ul class="sub-menu">
+                                <li><a href="blog-home.html">Blog Home</a></li>
+                                <li><a href="blog-details.html">Blog Details</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact-us.html">contact</a></li>
+                        <li><a href="#">pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="job-search.html">Job Search</a></li>
+                                <li><a href="job-single.html">Job Single</a></li>
+                                <li><a href="pricing-plan.html">Pricing Plan</a></li>
+                                <li><a href="elements.html">Elements</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-btn">
+                            <a href="#" onclick="document.getElementById('id01').style.display='block'" class="login">log in</a>
+                            <a href="#" onclick="document.getElementById('id02').style.display='block'" class="template-btn">sign up</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div id="menubar">
-            <ul id="menu">
-                <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li class="selected"><a th:href="@{/user/Logdata}">Home</a></li>
-                <li><a onclick="document.getElementById('id01').style.display='block'">Sign in</a></li>
-                <li><a onclick="document.getElementById('id02').style.display='block'">Sign up</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-        </div>
     </div>
-    <div id="site_content">
-        <div class="sidebar">
-            <h1>Latest News</h1>
-            <h4>New Website Launched</h4>
-            <h5>January 1st, 2010</h5>
-            <p>2010 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
-            <h1>Useful Links</h1>
-            <ul>
-                <li><a href="#">link 1</a></li>
-                <li><a href="#">link 2</a></li>
-                <li><a href="#">link 3</a></li>
-                <li><a href="#">link 4</a></li>
-            </ul>
-            <h1>Search</h1>
-            <form method="post" action="#" id="search_form">
-                <p>
-                    <input class="search" type="text" name="search_field" value="Enter keywords....." />
-                    <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" th:src="@{/images/search.png}" src="../images/search.png" alt="Search" title="Search" />
-                </p>
-            </form>
-        </div>
-        <div id="content">
-            <h1>Welcome to the night_sky_2 template</h1>
-            <p>This standards compliant, simple, fixed width website template is released as an 'open source' design (under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 Licence</a>), which means that you are free to download and use it for anything you want (including modifying and amending it). All I ask is that you leave the 'design from HTML5webtemplates.co.uk' link in the footer of the template, but other than that...</p>
-            <p>This template is written entirely in <strong>HTML5</strong> and <strong>CSS</strong>, and can be validated using the links in the footer.</p>
-            <p>You can view more free HTML5 web templates <a href="http://www.html5webtemplates.co.uk">here</a>.</p>
-            <p>This template is a fully functional 5 page website, with an <a href="examples.html">examples</a> page that gives examples of all the styles available with this design.</p>
-            <h2>Browser Compatibility</h2>
-            <p>This template has been tested in the following browsers:</p>
-            <ul>
-                <li>Internet Explorer 8</li>
-                <li>FireFox 3</li>
-                <li>Google Chrome 13</li>
-            </ul>
-        </div>
-    </div>
-    <div id="footer">
-        <p><a href="index.html">Home</a> | <a href="examples.html">Examples</a> | <a href="page.html">A Page</a> | <a href="another_page.html">Another Page</a> | <a href="contact.html">Contact Us</a></p>
-        <p>Copyright &copy; night_sky_2 | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Website templates</a></p>
-    </div>
-</div>
+</header>
+<!-- Header Area End -->
 
+<!-- Banner Area Starts -->
+<section class="banner-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 px-0">
+                <div class="banner-bg"></div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <div class="banner-text">
+                    <h1>find your dream <span>job</span> with comport</h1>
+                    <p class="py-3">Wherein herb beginning. Moved after gathering. Sea hi crate fowl man replenish place divided likeness herb one two lnetn Winged moving saw, may over.</p>
+                    <a href="#" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Area End -->
+
+<!-- Category Area Starts -->
+<section class="category-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-top text-center">
+                    <h2>Find job by category</h2>
+                    <p>Open lesser winged midst wherein may morning</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center mb-4">
+                    <img src="../static/images/cat1.png" th:src="@{/images/cat1.png}" alt="category">
+                    <h4>accounting & Finance</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center mb-4">
+                    <img src="../static/images/cat2.png" th:src="@{/images/cat2.png}" alt="category">
+                    <h4>production & operation</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center mb-4">
+                    <img src="../static/images/cat3.png" th:src="@{/images/cat3.png}" alt="category">
+                    <h4>telecommunication</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center mb-4">
+                    <img src="../static/images/cat4.png" th:src="@{/images/cat4.png}" alt="category">
+                    <h4>garments & textile</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center mb-4 mb-lg-0">
+                    <img src="../static/images/cat5.png" th:src="@{/images/cat5.png}" alt="category">
+                    <h4>marketing and sales</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center mb-4 mb-lg-0">
+                    <img src="../static/images/cat6.png" th:src="@{/images/logo/favicon.png}" alt="category">
+                    <h4>engineer & architech</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center mb-4 mb-md-0">
+                    <img src="../static/images/cat7.png" th:src="@{/images/cat7.png}" alt="category">
+                    <h4>design & crative</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="single-category text-center">
+                    <img src="../static/images/cat8.png" th:src="@{/images/cat8.png}" alt="category">
+                    <h4>customer support</h4>
+                    <h5>250 open job</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Category Area End -->
 
 <div id="id01" class="modal">
 
@@ -150,8 +244,51 @@
     </form>
 </div>
 
+<!-- Footer Area Starts -->
+<footer class="footer-area section-padding">
+    <div class="footer-widget">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-3">
+
+                </div>
+                <div class="col-xl-5 offset-xl-1 col-lg-6">
+
+                </div>
+                <div class="col-xl-3 offset-xl-1 col-lg-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
+                            <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</span>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Footer Area End -->
 
 
+<!-- Javascript -->
 <script>
     // Get the modal
     var modal = document.getElementById('id01');
@@ -173,5 +310,12 @@
         }
     }
 </script>
+<script src="../static/js/vendor/jquery-2.2.4.min.js" th:src="@{/js/vendor/jquery-2.2.4.min.js}" ></script>
+<script src="../static/js/vendor/bootstrap-4.1.3.min.js" th:src="@{/js/vendor/bootstrap-4.1.3.min.js}" ></script>
+<script src="../static/js/vendor/wow.min.js" th:src="@{/js/vendor/wow.min.js}" ></script>
+<script src="../static/js/vendor/owl-carousel.min.js" th:src="@{/js/vendor/owl-carousel.min.js}" ></script>
+<script src="../static/js/vendor/jquery.nice-select.min.js" th:src="@{/js/vendor/jquery.nice-select.min.js}" ></script>
+<script src="../static/js/vendor/ion.rangeSlider.js" th:src="@{/js/vendor/ion.rangeSlider.js}" ></script>
+<script src="../static/js/main.js" th:src="@{/js/main.js}" ></script>
 </body>
 </html>
