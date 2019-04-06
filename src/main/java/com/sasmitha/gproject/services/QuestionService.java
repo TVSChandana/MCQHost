@@ -12,4 +12,5 @@ public interface QuestionService{
 
     List<QuestionData> getLoggedUserQuestioData(String userName);
 
+    int getsetid(int userid);
 }

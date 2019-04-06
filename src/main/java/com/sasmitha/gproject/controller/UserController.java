@@ -54,7 +54,7 @@ public class UserController extends HttpServlet {
     }
 
     @PostMapping("/login")
-    public ModelAndView logPost(User user,ModelMap model){
+    public ModelAndView logPost(User user,ModelMap model,HttpServletRequest request){
        int a=userServices.validUserData(user.getUsername(),user.getPassword());
         QuestionData questionData=new QuestionData();
         model.addAttribute("questionData",questionData);
@@ -65,9 +65,11 @@ public class UserController extends HttpServlet {
 
            Integer result=list.size();
            model.addAttribute("results",result);
+
 //           HttpServletRequest request = null;
-//           HttpSession session = request.getSession(true);
-//           session.setAttribute("loggedUserName", user.getUsername());
+           HttpSession session = request.getSession(true);
+           session.setAttribute("loggedUserName", user.getUsername());
+
            return new ModelAndView("QuestionData");
        }else{
            return new ModelAndView("successTest");

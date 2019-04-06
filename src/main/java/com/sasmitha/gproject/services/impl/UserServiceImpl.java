@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserServices {
         return "Data Saved";
     }
 
+    @Override
+    public int getuserid(String userName) {
+        return userRepository.getuserid(userName);
+    }
+
 }

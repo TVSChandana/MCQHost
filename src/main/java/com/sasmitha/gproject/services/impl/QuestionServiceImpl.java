@@ -36,4 +36,9 @@ public class QuestionServiceImpl implements QuestionService {
         return list;
 
     }
+
+    @Override
+    public int getsetid(int userid) {
+        return questionRepository.getSetId(userid);
+    }
 }

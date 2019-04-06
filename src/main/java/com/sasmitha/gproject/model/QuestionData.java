@@ -39,6 +39,14 @@ public class QuestionData {
     @Column(name="Created_Date")
     private Date CreatedDate;
 
+    public String getTestType() {
+        return TestType;
+    }
+
+    public void setTestType(String testType) {
+        TestType = testType;
+    }
+
     public String getTestName() {
         return TestName;
     }
@@ -49,6 +57,9 @@ public class QuestionData {
 
     @Column(name="Test_Name")
     private String TestName;
+
+    @Column(name="Test_Type")
+    private String TestType;
 
     @Column(name="Number_Of_Questions")
     private Integer NumberOfQuestions;

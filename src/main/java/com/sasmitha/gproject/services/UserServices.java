@@ -9,4 +9,6 @@ public interface UserServices {
     String saveUser(User user);
 
 
+    int getuserid(String userName);
+
 }
