@@ -43,6 +43,20 @@ public class UserController extends HttpServlet {
     @PostMapping("/register")
     public ModelAndView registerPost(User user) {
             userServices.saveUser(user);
+
+            //create an test data  with set id '0'
+            QuestionData qd=new QuestionData();
+            qd.setCreatedDate(null);
+            qd.setUserID(userServices.getuserid(user.getUsername()));
+            qd.setSetID(0);
+            qd.setQuestionDataID(0);
+            qd.setNumberOfQuestions(0);
+            qd.setTestName(null);
+            qd.setTestType(null);
+
+            questionService.saveQuestionData(qd);
+            //
+
         return new ModelAndView("redirect:data");
     }
 
@@ -63,7 +77,10 @@ public class UserController extends HttpServlet {
            list=questionService.getLoggedUserQuestioData(user.getUsername());
            model.addAttribute("list",list);
 
-           Integer result=list.size();
+
+
+           Integer result=list.size()-1;
+           list.remove(0);
            model.addAttribute("results",result);
 
 //           HttpServletRequest request = null;

@@ -8,16 +8,16 @@ public class Question {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name = "Set_ID")
-        private Integer Set_ID;
+        @Column(name = "Question_ID")
+        private Integer Question_ID;
 
 
-        @Column(name = "Question_No")
-        private Integer Question_No;
+        @Column(name = "Question_Data_Id")
+        private Integer Question_Data_Id;
 
 
-    @Column(name = "Question")
-    private String Quest;
+        @Column(name = "Question")
+        private String Quest;
 
         @Column(name = "Ans_1")
         private String Ans_1;
@@ -34,9 +34,79 @@ public class Question {
         @Column(name = "Correct_Ans")
         private Integer Correct_Ans;
 
+    public Integer getCorr_Ans_1() {
+        return Corr_Ans_1;
+    }
+
+    public void setCorr_Ans_1(Integer corr_Ans_1) {
+        Corr_Ans_1 = corr_Ans_1;
+    }
+
+    public Integer getCorr_Ans_2() {
+        return Corr_Ans_2;
+    }
+
+    public void setCorr_Ans_2(Integer corr_Ans_2) {
+        Corr_Ans_2 = corr_Ans_2;
+    }
+
+    public Integer getCorr_Ans_3() {
+        return Corr_Ans_3;
+    }
+
+    public void setCorr_Ans_3(Integer corr_Ans_3) {
+        Corr_Ans_3 = corr_Ans_3;
+    }
+
+    public Integer getCorr_Ans_4() {
+        return Corr_Ans_4;
+    }
+
+    public Integer getQuestion_ID() {
+        return Question_ID;
+    }
+
+    public void setQuestion_ID(Integer question_ID) {
+        Question_ID = question_ID;
+    }
+
+    public Integer getQuestion_Data_Id() {
+        return Question_Data_Id;
+    }
+
+    public void setQuestion_Data_Id(Integer question_Data_Id) {
+        Question_Data_Id = question_Data_Id;
+    }
+
+    public void setCorr_Ans_4(Integer corr_Ans_4) {
+        Corr_Ans_4 = corr_Ans_4;
+    }
+
         @Column(name = "Mark")
         private Integer Mark;
 
+        @Column(name = "Corr_Ans_1")
+        private Integer Corr_Ans_1;
+
+        @Column(name = "Corr_Ans_2")
+        private Integer Corr_Ans_2;
+
+        @Column(name = "Corr_Ans_3")
+        private Integer Corr_Ans_3;
+
+    public Integer getQuestion_Number() {
+        return Question_Number;
+    }
+
+    public void setQuestion_Number(Integer question_Number) {
+        Question_Number = question_Number;
+    }
+
+    @Column(name = "Corr_Ans_4")
+        private Integer Corr_Ans_4;
+
+        @Column(name="Question_Number")
+        private Integer Question_Number;
 
     public String getQuest() {
         return Quest;
@@ -46,21 +116,7 @@ public class Question {
         Quest = quest;
     }
 
-    public Integer getSet_ID() {
-        return Set_ID;
-    }
 
-    public void setSet_ID(Integer set_ID) {
-        Set_ID = set_ID;
-    }
-
-    public Integer getQuestion_No() {
-        return Question_No;
-    }
-
-    public void setQuestion_No(Integer question_No) {
-        Question_No = question_No;
-    }
 
 
 

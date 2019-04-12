@@ -41,4 +41,9 @@ public class QuestionServiceImpl implements QuestionService {
     public int getsetid(int userid) {
         return questionRepository.getSetId(userid);
     }
+
+    @Override
+    public int getQuestionDataId(int userid) {
+    return questionRepository.getQuestionDataId(userid);
+    }
 }
