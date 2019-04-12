@@ -25,6 +25,8 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController extends HttpServlet {
 
+    int zeroIndex;
+    String loggedUserName;
 
     @Autowired
     private UserServices userServices;
@@ -70,27 +72,48 @@ public class UserController extends HttpServlet {
     @PostMapping("/login")
     public ModelAndView logPost(User user,ModelMap model,HttpServletRequest request){
        int a=userServices.validUserData(user.getUsername(),user.getPassword());
-        QuestionData questionData=new QuestionData();
-        model.addAttribute("questionData",questionData);
+        loggedUserName=user.getUsername();
        if (a==1){
-           List<QuestionData> list=new LinkedList<QuestionData>();
-           list=questionService.getLoggedUserQuestioData(user.getUsername());
-           model.addAttribute("list",list);
 
-
-
-           Integer result=list.size()-1;
-           list.remove(0);
-           model.addAttribute("results",result);
-
-//           HttpServletRequest request = null;
+           //           HttpServletRequest request = null;
            HttpSession session = request.getSession(true);
            session.setAttribute("loggedUserName", user.getUsername());
 
-           return new ModelAndView("QuestionData");
+           return new ModelAndView("redirect:logSuccess");
+
+
        }else{
            return new ModelAndView("successTest");
        }
+
+    }
+
+    @GetMapping("/logSuccess")
+    public ModelAndView logSuccess(ModelMap model){
+
+        QuestionData questionData=new QuestionData();
+        model.addAttribute("questionData",questionData);
+
+        List<QuestionData> list=new LinkedList<QuestionData>();
+        list=questionService.getLoggedUserQuestioData(loggedUserName);
+        model.addAttribute("list",list);
+
+
+
+        int result=list.size()-1;
+
+        for(int i=0;i<=result;i++){
+            if(list.get(i).getSetID()==0){
+                zeroIndex=i;
+            }
+        }
+
+        list.remove(zeroIndex);
+
+        model.addAttribute("results",result);
+
+
+        return new ModelAndView("QuestionData");
 
     }
 }

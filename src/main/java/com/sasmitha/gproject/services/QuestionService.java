@@ -3,6 +3,7 @@ package com.sasmitha.gproject.services;
 import com.sasmitha.gproject.model.Question;
 import com.sasmitha.gproject.model.QuestionData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface QuestionService{
@@ -15,4 +16,6 @@ public interface QuestionService{
     int getsetid(int userid);
 
     int getQuestionDataId(int userid);
+
+    ArrayList<Question> viewAllQuestions(Integer questionDataID);
 }

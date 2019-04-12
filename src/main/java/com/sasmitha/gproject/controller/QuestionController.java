@@ -8,10 +8,7 @@ import javassist.bytecode.stackmap.BasicBlock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServlet;
@@ -21,10 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 
 @RestController
@@ -121,6 +115,7 @@ public class QuestionController extends HttpServlet {
             questionService.saveQuestion(question);
 
             if(i==numberOfQuestions+1){
+                i=1;
                 return new ModelAndView("successTest");
             }else{
                 return new ModelAndView("redirect:create");
@@ -128,4 +123,14 @@ public class QuestionController extends HttpServlet {
 
 
         }
+
+        @GetMapping("/view/{questionDataID}")
+        public ModelAndView viewQuestions(@PathVariable Integer questionDataID,ModelMap model){
+            ArrayList<Question> array=new ArrayList<>();
+            array=questionService.viewAllQuestions(questionDataID);
+            model.addAttribute("arr",array);
+            return new ModelAndView("viewQuestions");
+
+        }
+
     }

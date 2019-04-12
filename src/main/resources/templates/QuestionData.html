@@ -147,8 +147,8 @@
                         <img src="../static/images/mcq_two.png" th:src="@{/images/mcq_two.png}" alt="job">
                     </div>
                     <div class="job-btn align-self-center">
-                        <a href="#" class="third-btn job-btn1">full time</a>
-                        <a href="#" class="third-btn">apply</a>
+                        <a href="#" class="third-btn job-btn1" th:onclick="'window.location.href=\'/question/view/' + ${count.questionDataID} + '\''">view</a>
+                        <a href="#" class="third-btn">delete</a>
                     </div>
                 </div>
 

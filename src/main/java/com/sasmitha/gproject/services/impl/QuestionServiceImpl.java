@@ -8,6 +8,7 @@ import com.sasmitha.gproject.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,4 +47,11 @@ public class QuestionServiceImpl implements QuestionService {
     public int getQuestionDataId(int userid) {
     return questionRepository.getQuestionDataId(userid);
     }
+
+    @Override
+    public ArrayList<Question> viewAllQuestions(Integer questionDataID) {
+       return questionRepository.viewAllQuestions(questionDataID);
+    }
+
+
 }
