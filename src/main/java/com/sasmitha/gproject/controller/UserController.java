@@ -35,12 +35,12 @@ public class UserController extends HttpServlet {
     private QuestionService questionService;
 
 
-    @GetMapping("/data")
-    public ModelAndView registerGet(ModelMap model) {
-        User user=new User();
-        model.addAttribute("user",user);
-        return new ModelAndView("user");
-    }
+//    @GetMapping("/data")
+//    public ModelAndView registerGet(ModelMap model) {
+//        User user=new User();
+//        model.addAttribute("user",user);
+//        return new ModelAndView("user");
+//    }
 
     @PostMapping("/register")
     public ModelAndView registerPost(User user) {
@@ -59,7 +59,7 @@ public class UserController extends HttpServlet {
             questionService.saveQuestionData(qd);
             //
 
-        return new ModelAndView("redirect:data");
+        return new ModelAndView("redirect:Logdata");
     }
 
     @GetMapping("/Logdata")
@@ -93,7 +93,6 @@ public class UserController extends HttpServlet {
 
         QuestionData questionData=new QuestionData();
         model.addAttribute("questionData",questionData);
-
         List<QuestionData> list=new LinkedList<QuestionData>();
         list=questionService.getLoggedUserQuestioData(loggedUserName);
         model.addAttribute("list",list);

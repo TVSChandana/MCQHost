@@ -11,4 +11,6 @@ public interface UserServices {
 
     int getuserid(String userName);
 
+    int getConfermation(String pass, int logged_userId);
+
 }

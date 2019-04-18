@@ -16,6 +16,7 @@ public interface UserRepository extends JpaRepository<User,Integer > {
     @Query(value = "SELECT ID FROM User_Table WHERE username=:username",nativeQuery = true)
     int getuserid(@Param("username") String userName);
 
-
+    @Query(value = "SELECT count(username) FROM User_Table WHERE ID=:logged_userId AND Password=:pass",nativeQuery = true)
+    int getConfermation(@Param("pass") String pass,@Param("logged_userId") Integer logged_userId);
 
 }

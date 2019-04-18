@@ -2,6 +2,7 @@ package com.sasmitha.gproject.controller;
 
 import com.sasmitha.gproject.model.Question;
 import com.sasmitha.gproject.model.QuestionData;
+import com.sasmitha.gproject.model.User;
 import com.sasmitha.gproject.services.QuestionService;
 import com.sasmitha.gproject.services.UserServices;
 import javassist.bytecode.stackmap.BasicBlock;
@@ -10,15 +11,19 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static javax.swing.JOptionPane.showMessageDialog;
 
 
 @RestController
@@ -28,6 +33,7 @@ public class QuestionController extends HttpServlet {
     int logged_userId;
     int numberOfQuestions;
     int i=1;
+    int deleteQuestionId;
 
     @Autowired
     private QuestionService questionService;
@@ -88,7 +94,7 @@ public class QuestionController extends HttpServlet {
         }
 
         @PostMapping("/insertQuestion")
-        public ModelAndView saveQuestionPost(Question question,BindingResult result) {
+        public ModelAndView saveQuestionPost(Question question, BindingResult result) {
             if (question.getCorr_Ans_1()==null){
                 question.setCorr_Ans_1(0);
             }
@@ -116,9 +122,15 @@ public class QuestionController extends HttpServlet {
 
             if(i==numberOfQuestions+1){
                 i=1;
-                return new ModelAndView("successTest");
+                return new ModelAndView("redirect:http://localhost:8080/user/logSuccess");
+//                RedirectView rv = new RedirectView();
+//                rv.setUrl("http://localhost:8080/user/logSuccess");
+//                return rv;
             }else{
                 return new ModelAndView("redirect:create");
+//                RedirectView rv = new RedirectView();
+//                rv.setUrl("/question/create");
+//                return rv;
             }
 
 
@@ -133,4 +145,31 @@ public class QuestionController extends HttpServlet {
 
         }
 
+    @GetMapping("/delete/{questionDataID}")
+    public ModelAndView confirmDeleteQuestions(@PathVariable Integer questionDataID,ModelMap model){
+        deleteQuestionId=questionDataID;
+        User user=new User();
+        model.addAttribute("user",user);
+        return new ModelAndView("confirm");
+
+    }
+
+    @PostMapping("/delete")
+    public ModelAndView deleteQuestions(ModelMap model,User user,HttpServletRequest request, HttpServletResponse response){
+        HttpSession session=request.getSession(false);
+        String userName = (String) session.getAttribute("loggedUserName");
+        int userId=userServices.getuserid(userName);
+
+        String pass=user.getPassword();
+
+        int value=userServices.getConfermation(pass,userId);
+
+        if (value>0) {
+            questionService.deleteQuestionData(deleteQuestionId);
+            //questionService.deleteQuestion(questionDataID);
+        }
+
+        return new ModelAndView("redirect:http://localhost:8080/user/logSuccess");
+
+    }
     }

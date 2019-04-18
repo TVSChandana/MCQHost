@@ -20,5 +20,8 @@ public interface QuestionRepository extends JpaRepository<Question,Integer> {
 
     @Query(value = "SELECT * FROM Question WHERE Question_Data_Id=:questionDataID",nativeQuery = true)
     ArrayList<Question> viewAllQuestions(@Param("questionDataID") Integer questionDataID);
+
+    @Query(value = "Delete  FROM Question WHERE Question_Data_Id=:questionDataID",nativeQuery = true)
+    void deleteAllQuestions(@Param("questionDataID") Integer questionDataID);
 }
 

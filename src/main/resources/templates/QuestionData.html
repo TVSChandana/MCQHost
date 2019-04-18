@@ -147,8 +147,9 @@
                         <img src="../static/images/mcq_two.png" th:src="@{/images/mcq_two.png}" alt="job">
                     </div>
                     <div class="job-btn align-self-center">
-                        <a href="#" class="third-btn job-btn1" th:onclick="'window.location.href=\'/question/view/' + ${count.questionDataID} + '\''">view</a>
-                        <a href="#" class="third-btn">delete</a>
+                        <a  class="third-btn job-btn1"  th:onclick="'window.location.href=\'/question/view/' + ${count.questionDataID} + '\''">view</a>
+                        <a href="#" class="third-btn" th:onclick="'window.location.href=\'/question/delete/' + ${count.questionDataID} + '\''">delete</a>
+
                     </div>
                 </div>
 
@@ -211,7 +212,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Footer Area End -->
 
 <div id="id03" class="modal">
-    <form class="modal-content animate"action="#" th:action="@{/question/insertQuestionData}" th:object="${questionData}" method="POST">
+    <form class="modal-content animate" action="#" th:action="@{/question/insertQuestionData}" th:object="${questionData}" method="POST">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src="https://www.shareicon.net/download/2016/07/06/105077_document_512x512.png" alt="Avatar" class="avatar">
@@ -249,7 +250,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <!-- Javascript -->
-
 <script src="../static/js/vendor/jquery-2.2.4.min.js" th:src="@{/js/vendor/jquery-2.2.4.min.js}" ></script>
 <script src="../static/js/vendor/bootstrap-4.1.3.min.js" th:src="@{/js/vendor/bootstrap-4.1.3.min.js}" ></script>
 <script src="../static/js/vendor/wow.min.js" th:src="@{/js/vendor/wow.min.js}" ></script>
@@ -257,6 +257,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../static/js/vendor/jquery.nice-select.min.js" th:src="@{/js/vendor/jquery.nice-select.min.js}" ></script>
 <script src="../static/js/vendor/ion.rangeSlider.js" th:src="@{/js/vendor/ion.rangeSlider.js}" ></script>
 <script src="../static/js/main.js" th:src="@{/js/main.js}" ></script>
+
 </body>
 </html>
 

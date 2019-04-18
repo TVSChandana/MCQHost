@@ -18,4 +18,10 @@ public interface QuestionService{
     int getQuestionDataId(int userid);
 
     ArrayList<Question> viewAllQuestions(Integer questionDataID);
+
+
+    void deleteQuestion(Integer questionDataID);
+
+    void deleteQuestionData(Integer questionDataID);
+
 }

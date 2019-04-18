@@ -856,7 +856,7 @@ input:focus, textarea:focus {
 
 .newsletter-area {
     background-color: #f9f9f9;
-    background-image: url("../images/newsletter-bg.jpg");
+    background-image: url("../images/alert.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1374,7 +1374,7 @@ input:focus, textarea:focus {
 }
 
 .newsletter-area.job-single:after {
-    background: rgba(255, 153, 2, 0.7)
+    background: rgba(255, 17, 0, 0.7)
 }
 
 .single-table {

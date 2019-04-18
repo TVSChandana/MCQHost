@@ -53,5 +53,16 @@ public class QuestionServiceImpl implements QuestionService {
        return questionRepository.viewAllQuestions(questionDataID);
     }
 
+    @Override
+    public void deleteQuestion(Integer questionDataID) {
+       questionRepository.deleteAllQuestions(questionDataID);
+
+    }
+
+    @Override
+    public void deleteQuestionData(Integer questionDataID) {
+        questionDataRepository.deleteById(questionDataID);
+    }
+
 
 }

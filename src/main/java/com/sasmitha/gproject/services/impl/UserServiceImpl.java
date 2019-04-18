@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserServices {
         return userRepository.getuserid(userName);
     }
 
+    @Override
+    public int getConfermation(String pass, int logged_userId) {
+      return  userRepository.getConfermation(pass,logged_userId);
+    }
+
 }
