@@ -66,14 +66,14 @@
                         <li><a href="#">Login</a>
                             <ul class="sub-menu">
                                 <li><a href="#" onclick="document.getElementById('id01').style.display='block'" >Admin Login</a></li>
-                                <li><a href="job-single.html">Student Login</a></li>
+                                <li><a href="#" onclick="document.getElementById('id03').style.display='block'">Student Login</a></li>
                             </ul>
                         </li>
 
                         <li><a href="#"><font color="red">Sign Up</font></a>
                             <ul class="sub-menu">
                                 <li> <a href="#" onclick="document.getElementById('id02').style.display='block'" >Admin sign up</a></li>
-                                <li><a href="job-single.html">Student sign up</a></li>
+                                <li><a href="#"  onclick="document.getElementById('id04').style.display='block'">Student sign up</a></li>
                             </ul>
                         </li>
                         <!--<li class="menu-btn">-->
@@ -250,6 +250,77 @@
     </form>
 </div>
 
+
+<div id="id03" class="modal">
+
+    <form class="modal-content animate"action="#" th:action="@{/user/studentLogin}" th:object="${student}" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <!--<img src="https://previews.123rf.com/images/ammentorp/ammentorp1610/ammentorp161000226/64925405-young-businessman-using-laptop-computer-in-office-young-male-executive-working-on-laptop-at-his-desk.jpg" alt="Avatar" class="avatar">-->
+        </div>
+
+        <div class="container">
+            <label ><b>User Name: </b></label>
+            <input type="text" th:field="*{username}" />
+
+            <label ><b>Password</b></label>
+            <input type="password" th:field="*{password}" />
+
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+
+<div id="id04" class="modal">
+
+    <form class="modal-content animate"action="#" th:action="@{/user/studentRegister}" th:object="${student}" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <!--<img src="https://www.inwhatlanguage.com/wp-content/uploads/2017/01/Project-Manager-01.png" alt="Avatar" class="avatar">-->
+        </div>
+
+        <div class="container">
+            <label ><b>First Name: </b></label>
+            <input type="text" th:field="*{firstName}" />
+
+            <label ><b>Last Name: </b></label>
+            <input type="text" th:field="*{lastName}" />
+
+
+            <label ><b>User Name: </b></label>
+            <input type="text" th:field="*{username}" />
+
+            <label ><b>Email: </b></label>
+            <input type="text" th:field="*{email}" />
+
+
+            <label ><b>Password: </b></label>
+            <input type="password" th:field="*{password}" />
+
+            <label ><b>Confirm Password: </b></label>
+            <input type="password" th:field="*{conPassword}" />
+
+            <button type="submit">Sign Up</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
 <!-- Footer Area Starts -->
 <footer class="footer-area section-padding">
     <div class="footer-widget">

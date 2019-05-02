@@ -73,7 +73,7 @@
                         <ul>
                             <li class="active"><a href="index.html">home</a></li>
                             <li><a href="about.html">about us</a></li>
-                            <li><a href="job-category.html">category</a></li>
+                            <li><a th:href="@{/user/followereManage}">category</a></li>
                             <li><a href="#">blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog-home.html">Blog Home</a></li>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="job-btn align-self-center">
                         <a  class="third-btn job-btn1"  th:onclick="'window.location.href=\'/question/view/' + ${count.questionDataID} + '\''">view</a>
-                        <a href="#" class="third-btn" th:onclick="'window.location.href=\'/question/delete/' + ${count.questionDataID} + '\''">delete</a>
+                        <a href="#" class="third-btn" th:onclick="' window.location.href=\'/question/delete/' + ${count.questionDataID} + '\''">delete</a>
 
                     </div>
                 </div>
