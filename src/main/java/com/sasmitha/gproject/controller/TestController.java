@@ -30,6 +30,12 @@ public class TestController {
     int G_Student_Id;
     int G_Question_Data_Id;
     int G_Question_Id;
+    int G_Question_Number;
+    String G_Quest;
+    String G_Ans_1;
+    String G_Ans_2;
+    String G_Ans_3;
+    String G_Ans_4;
     int G_Corr_Ans_1;
     int G_Corr_Ans_2;
     int G_Corr_Ans_3;
@@ -120,7 +126,7 @@ public class TestController {
 
         if(pivot==arraySize){
             pivot=0;
-            return new ModelAndView("successTest");
+            return new ModelAndView("redirect:answerViwe");
         }else{
 
 
@@ -141,6 +147,12 @@ public class TestController {
 
             G_Question_Data_Id=array.get(pivot).getQuestion_Data_Id();
             G_Question_Id=array.get(pivot).getQuestion_ID();
+            G_Question_Number=array.get(pivot).getQuestion_Number();
+            G_Quest=array.get(pivot).getQuest();
+            G_Ans_1=array.get(pivot).getAns_1();
+            G_Ans_2=array.get(pivot).getAns_2();
+            G_Ans_3=array.get(pivot).getAns_3();
+            G_Ans_4=array.get(pivot).getAns_4();
             G_Corr_Ans_1=array.get(pivot).getCorr_Ans_1();
             G_Corr_Ans_2=array.get(pivot).getCorr_Ans_2();
             G_Corr_Ans_3=array.get(pivot).getCorr_Ans_3();
@@ -166,6 +178,13 @@ public class TestController {
         answers.setStudent_Id(G_Student_Id);
         answers.setQuestion_Data_Id(G_Question_Data_Id);
         answers.setQuestion_Id(G_Question_Id);
+        answers.setQuestion_Number(G_Question_Number);
+
+        answers.setQuest(G_Quest);
+        answers.setAns_1(G_Ans_1);
+        answers.setAns_2(G_Ans_2);
+        answers.setAns_3(G_Ans_3);
+        answers.setAns_4(G_Ans_4);
 
         answers.setCorr_Ans_1(G_Corr_Ans_1);
         answers.setCorr_Ans_2(G_Corr_Ans_2);
@@ -192,6 +211,11 @@ public class TestController {
             answers.setStud_Ans_4(0);
         }
 
+        if(answers.getStud_Ans_1()==0 && answers.getStud_Ans_2()==0 && answers.getStud_Ans_3()==0  && answers.getStud_Ans_4()==0){
+         answers.setAnswered_Or_Not("Not Answered");
+        }else{
+            answers.setAnswered_Or_Not("Answered");
+        }
 
         if(answers.getStud_Ans_1()==G_Corr_Ans_1 && answers.getStud_Ans_2()==G_Corr_Ans_2 && answers.getStud_Ans_3()==G_Corr_Ans_3  && answers.getStud_Ans_4()==G_Corr_Ans_4  )
         {
@@ -205,5 +229,22 @@ public class TestController {
         answersService.saveAnswerData(answers);
 
         return new ModelAndView("redirect:map");
+    }
+
+
+    @GetMapping("/answerViwe")
+    public ModelAndView answerView( ModelMap model){
+        List<Answers> list=new LinkedList<Answers>();
+        list=answersService.getTestData(G_Student_Id,G_Question_Data_Id);
+        model.addAttribute("list",list);
+        return new ModelAndView("AnswerSummary");
+    }
+
+    @GetMapping("/viewMarks")
+    public ModelAndView viewMarks( ModelMap model){
+        List<Answers> list=new LinkedList<Answers>();
+        list=answersService.getTestData(G_Student_Id,G_Question_Data_Id);
+        model.addAttribute("list",list);
+        return new ModelAndView("ViewMarks");
     }
 }
