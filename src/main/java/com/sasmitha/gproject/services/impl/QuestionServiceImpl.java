@@ -64,5 +64,10 @@ public class QuestionServiceImpl implements QuestionService {
         questionDataRepository.deleteById(questionDataID);
     }
 
+    @Override
+    public QuestionData getQuestionData(Integer questionDataID) {
+        return questionDataRepository.getOne(questionDataID);
+    }
+
 
 }

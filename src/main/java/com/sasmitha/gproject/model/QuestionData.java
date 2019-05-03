@@ -56,12 +56,22 @@ public class QuestionData {
     @Column(name="Test_Name")
     private String TestName;
 
+    public String getTest_Password() {
+        return Test_Password;
+    }
+
+    public void setTest_Password(String test_Password) {
+        Test_Password = test_Password;
+    }
+
     @Column(name="Test_Type")
     private String TestType;
 
     @Column(name="Number_Of_Questions")
     private Integer NumberOfQuestions;
 
+    @Column(name="Test_Password")
+    private String Test_Password;
 
     public Integer getUserID() {
         return UserID;

@@ -54,5 +54,10 @@ public class UserServiceImpl implements UserServices {
         return userRepository.getRequestData(i,loggedStudentId);
     }
 
+    @Override
+    public String getAdminUserName(Integer admin_id) {
+        return userRepository.getAdminUserName(admin_id);
+    }
+
 
 }

@@ -24,4 +24,5 @@ public interface QuestionService{
 
     void deleteQuestionData(Integer questionDataID);
 
+    QuestionData getQuestionData(Integer questionDataID);
 }

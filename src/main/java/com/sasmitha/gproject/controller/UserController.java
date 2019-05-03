@@ -121,10 +121,12 @@ public class UserController extends HttpServlet {
 
 
     @PostMapping("/studentLogin")
-    public ModelAndView studentLogPost(Student student){
+    public ModelAndView studentLogPost(Student student,HttpServletRequest request){
         int a=studentService.validStudentData(student.getUsername(),student.getPassword());
         loggedStudentName=student.getUsername();
         if (a==1){
+            HttpSession studentSession = request.getSession(true);
+            studentSession.setAttribute("loggedStudentName",student.getUsername());
             return new ModelAndView("redirect:studentLogSuccess");
         }else{
             return new ModelAndView("successTest");

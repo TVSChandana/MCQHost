@@ -28,7 +28,7 @@ public interface UserRepository extends JpaRepository<User,Integer > {
     @Query(value = "SELECT  ID,first_name,last_name,Request_Id  FROM User_Table t Join Request_Table r  on t.ID=r.Admin_Id WHERE r.Request_status=:i and r.Student_Id=:loggedStudentId",nativeQuery = true)
     List<RequestData> getRequestData(@Param("i") Integer i, @Param("loggedStudentId") Integer loggedStudentId);
 
+    @Query(value = "SELECT  username FROM User_Table WHERE ID=:admin_id",nativeQuery = true)
+    String getAdminUserName(@Param("admin_id") Integer admin_id);
 
-//    @Query(value = "SELECT  t.ID,t.first_name,t.last_name,r.Request_Id  FROM User_Table t Join Request_Table r  on t.ID=r.Admin_Id WHERE r.Request_status=:i and r.Student_Id=:loggedStudentId",nativeQuery = true)
-//    List<RequestData> getRequestData(@Param("i") Integer i, @Param("loggedStudentId") Integer loggedStudentId);
 }

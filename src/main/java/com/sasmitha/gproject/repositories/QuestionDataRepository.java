@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface QuestionDataRepository extends JpaRepository<QuestionData,Integer> {
 
-    @Query(value = "select q.Question_DataID,q.Number_Of_Questions,q.SetID,q.Test_Name,q.UserID,q.Created_Date,q.Test_Type FROM User_Table u Inner Join Question_Data q ON u.ID=q.UserID where username=:username",nativeQuery = true)
+    @Query(value = "select q.Question_DataID,q.Number_Of_Questions,q.SetID,q.Test_Name,q.UserID,q.Created_Date,q.Test_Type,q.Test_Password FROM User_Table u Inner Join Question_Data q ON u.ID=q.UserID where username=:username",nativeQuery = true)
     List<QuestionData> getLoggedUserQuestioData(@Param("username") String userName);
 
     @Query(value = "Delete FROM Question_Data WHERE Question_DataID=:questionDataID",nativeQuery = true)

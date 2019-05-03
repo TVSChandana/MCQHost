@@ -23,4 +23,7 @@ public interface UserServices {
     User search(Integer ID);
 
     List<RequestData> getRequestData(int i, int loggedStudentId);
+
+
+    String getAdminUserName(Integer admin_id);
 }
