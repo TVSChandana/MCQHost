@@ -48,7 +48,7 @@
             border: none;
             box-shadow: none;
             background-color:lightsteelblue;
-
+            margin-left: 13%;
 
         }
     </style>
@@ -81,24 +81,24 @@
                     </div>
                     <div class="main-menu main-menu-light">
                         <ul>
-                            <li class="active"><a href="index.html">home</a></li>
-                            <li><a href="about.html">about us</a></li>
-                            <li><a th:href="@{/user/followereManage}">category</a></li>
-                            <li><a href="#">blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog-home.html">Blog Home</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-us.html">contact</a></li>
-                            <li><a href="#">pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="job-search.html">Job Search</a></li>
-                                    <li><a href="job-single.html">Job Single</a></li>
-                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
-                                </ul>
-                            </li>
+                            <li class="active"><a th:href="@{/user/studentLogSuccess}">Go Back to home</a></li>
+                            <!--<li><a href="about.html">about us</a></li>-->
+                            <!--<li><a th:href="@{/user/followereManage}">category</a></li>-->
+                            <!--<li><a href="#">blog</a>-->
+                                <!--<ul class="sub-menu">-->
+                                    <!--<li><a href="blog-home.html">Blog Home</a></li>-->
+                                    <!--<li><a href="blog-details.html">Blog Details</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            <!--<li><a href="contact-us.html">contact</a></li>-->
+                            <!--<li><a href="#">pages</a>-->
+                                <!--<ul class="sub-menu">-->
+                                    <!--<li><a href="job-search.html">Job Search</a></li>-->
+                                    <!--<li><a href="job-single.html">Job Single</a></li>-->
+                                    <!--<li><a href="pricing-plan.html">Pricing Plan</a></li>-->
+                                    <!--<li><a href="elements.html">Elements</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
 
                         </ul>
                     </div>
@@ -123,19 +123,14 @@
                     <h6>Grade</h6>
                 </a>
             </li>
-            <!--<li th:each="count:${list}">-->
-                <!--<a href="#" class="justify-content-between align-items-center d-flex">-->
-                    <!--<h6>[[${count.question_Number}]]</h6>-->
-                    <!--<span>[[${count.answered_Or_Not}]]</span>-->
-                <!--</a>-->
-            <!--</li>-->
-            <li th:each="count:${list}">
+
+            <li>
                 <a href="#" class="justify-content-between align-items-center d-flex">
-                    <h6>30</h6>
-                    <h6>2</h6>
-                    <h6>5</h6>
-                    <h6>100</h6>
-                    <h6>80</h6>
+                    <h6>[[${numberOfQuestions}]]</h6>
+                    <h6>[[${unAnsweredQuestions}]]</h6>
+                    <h6>[[${incorrectQuestions}]]</h6>
+                    <h6>[[${totalMarks}]]</h6>
+                    <h6>[[${studentMarks}]]</h6>
                     <h6>A</h6>
 
                 </a>
@@ -162,12 +157,12 @@
                                              <mark style="background-color:#9fcdff"> Your Answer/s:[[${count.stud_Ans_1}==0?'':${count.stud_Ans_1}]]    [[${count.stud_Ans_2}==0?'':${count.stud_Ans_2}]]   [[${count.stud_Ans_3}==0?'':${count.stud_Ans_3}]]   [[${count.stud_Ans_4}==0?'':${count.stud_Ans_4}]] </mark></li>
                         </ul>
                     </div>
-                    <div class="job-img align-self-center">
-                        <img src="../static/images/mcq_two.png" th:src="@{/images/mcq_two.png}" alt="job">
-                    </div>
+                    <!--<div class="job-img align-self-center">-->
+                        <!--<img src="../static/images/mcq_two.png" th:src="@{/images/mcq_two.png}" alt="job">-->
+                    <!--</div>-->
                     <!--<div class="job-btn align-self-center">-->
                         <!--<a  class="third-btn job-btn1"  th:onclick="'window.location.href=\'/question/view/' + ${count.stud_Ans_1} + '\''">view</a>-->
-                        <a href="#" class="third-btn" th:onclick="' window.location.href=\'/question/delete/' + ${count.question_Number} + '\''">delete</a>
+                        <!--<a href="#" class="third-btn" th:onclick="' window.location.href=\'/question/delete/' + ${count.question_Number} + '\''">delete</a>-->
 
                     <!--</div>-->
                 </div>

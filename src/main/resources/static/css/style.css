@@ -1251,10 +1251,10 @@ input:focus, textarea:focus {
 
 .header-area.single-page {
     background-color: #b0b0b0;
-    background-image: url("../images/page-header-bg.jpg");
+    background-image: url("../images/mcq_three.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size:cover;
     position: relative;
     z-index: 1
 }

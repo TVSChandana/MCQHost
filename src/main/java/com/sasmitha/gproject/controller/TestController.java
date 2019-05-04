@@ -245,6 +245,19 @@ public class TestController {
         List<Answers> list=new LinkedList<Answers>();
         list=answersService.getTestData(G_Student_Id,G_Question_Data_Id);
         model.addAttribute("list",list);
+
+        int numberOfQuestions=answersService.getQuestionCount(G_Student_Id,G_Question_Data_Id);
+        int unAnsweredQuestions=answersService.getUnAnsweredQuestionNumberCount(G_Student_Id,G_Question_Data_Id);
+        int incorrectQuestions=answersService.getIncorrectQuestions(G_Student_Id,G_Question_Data_Id);
+        int totalMarks=answersService.getTotalMarks(G_Student_Id,G_Question_Data_Id);
+        int studentMarks=answersService.getStudentMarks(G_Student_Id,G_Question_Data_Id);
+
+        model.addAttribute("numberOfQuestions",numberOfQuestions);
+        model.addAttribute("unAnsweredQuestions",unAnsweredQuestions);
+        model.addAttribute("incorrectQuestions",incorrectQuestions);
+        model.addAttribute("totalMarks",totalMarks);
+        model.addAttribute("studentMarks",studentMarks);
+
         return new ModelAndView("ViewMarks");
     }
 }
