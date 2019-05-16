@@ -110,6 +110,7 @@ public class QuestionController extends HttpServlet {
 
             question.setCorrect_Ans(question.getCorr_Ans_1()*1000+question.getCorr_Ans_2()*100+question.getCorr_Ans_3()*10+question.getCorr_Ans_4());
 
+            int oo=questionService.getQuestionDataId(logged_userId);
 
             question.setQuestion_Data_Id(questionService.getQuestionDataId(logged_userId));
 
