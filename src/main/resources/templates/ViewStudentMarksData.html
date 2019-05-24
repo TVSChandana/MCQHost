@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Page Title -->
+    <title>Job Search</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+
+    <!-- CSS Files -->
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="../static/css/font-awesome-4.7.0.min.css" th:href="@{/css/font-awesome-4.7.0.min.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/fonts/flat-icon/flaticon.css">
+    <link href="../static/css/bootstrap-4.1.3.min.css" th:href="@{/css/bootstrap-4.1.3.min.css}" rel="stylesheet" />
+    <link href="../static/css/owl-carousel.min.css" th:href="@{/css/owl-carousel.min.css}" rel="stylesheet" />
+    <link href="../static/css/nice-select.css" th:href="@{/css/nice-select.css}" rel="stylesheet" />
+    <link href="../static/css/animate-3.7.0.css" th:href="@{/css/animate-3.7.0.css}" rel="stylesheet" />
+    <link href="../static/css/logstyle.css" th:href="@{/css/logstyle.css}" rel="stylesheet" />
+
+    <style>
+
+        .template-btn{
+            margin-left: 1000px;
+            margin-right:120px;
+            margin-bottom: 120px;
+        }
+
+        select {
+            padding: 5px 8px;
+            width: 500px;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            background-image: none;
+            -webkit-appearance: none;
+
+        }
+
+        div.answerSummery {
+            padding: 5px 8px;
+            width: 1300px;
+            border: none;
+            box-shadow: none;
+            background-color:lightsteelblue;
+            margin-left: 2%;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Preloader Starts -->
+<div class="preloader">
+    <div class="spinner"></div>
+</div>
+<!-- Preloader End -->
+
+<!-- Header Area Starts -->
+<header class="header-area single-page">
+    <div class="header-top1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="logo-area">
+                        <a href="index.html"><img src="../static/images/logo.png" th:src="@{/images/logo.png}" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="custom-navbar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="main-menu main-menu-light">
+                        <ul>
+                            <li class="active"><a th:href="@{/user/studentLogSuccess}">Go Back to home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="answerSummery">
+    <div class="single-widget category-widget" >
+        <ul >
+
+            <li>
+                <a class="justify-content-between align-items-center d-flex">
+                    <h6>Student Name</h6>
+                    <h6>Number Of Questions</h6>
+                    <h6>Un Answered Questions</h6>
+                    <h6>Total Marks</h6>
+                    <h6>Student Marks</h6>
+                    <h6>Grade</h6>
+                </a>
+            </li>
+
+            <li>
+                <a href="#" class="justify-content-between align-items-center d-flex" th:each="count:${list}">
+                    <h6>[[${count.studentName}]]</h6>
+                    <h6>[[${count.numberOfQuestions}]]</h6>
+                    <h6>[[${count.unAnsweredQuestions}]]</h6>
+                    <h6>[[${count.totalMarks}]]</h6>
+                    <h6>[[${count.studentMarks}]]</h6>
+                    <h6>A</h6>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</section>
+<!-- Jobs Area End -->
+
+
+
+<!-- Javascript -->
+<script src="../static/js/vendor/jquery-2.2.4.min.js" th:src="@{/js/vendor/jquery-2.2.4.min.js}" ></script>
+<script src="../static/js/vendor/bootstrap-4.1.3.min.js" th:src="@{/js/vendor/bootstrap-4.1.3.min.js}" ></script>
+<script src="../static/js/vendor/wow.min.js" th:src="@{/js/vendor/wow.min.js}" ></script>
+<script src="../static/js/vendor/owl-carousel.min.js" th:src="@{/js/vendor/owl-carousel.min.js}" ></script>
+<script src="../static/js/vendor/jquery.nice-select.min.js" th:src="@{/js/vendor/jquery.nice-select.min.js}" ></script>
+<script src="../static/js/vendor/ion.rangeSlider.js" th:src="@{/js/vendor/ion.rangeSlider.js}" ></script>
+<script src="../static/js/main.js" th:src="@{/js/main.js}" ></script>
+
+</body>
+</html>
+

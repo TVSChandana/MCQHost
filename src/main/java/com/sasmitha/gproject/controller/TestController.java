@@ -3,11 +3,13 @@ package com.sasmitha.gproject.controller;
 import com.sasmitha.gproject.model.Answers;
 import com.sasmitha.gproject.model.Question;
 import com.sasmitha.gproject.model.QuestionData;
+import com.sasmitha.gproject.model.StudentAnswerData;
 import com.sasmitha.gproject.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -63,7 +65,15 @@ public class TestController {
     private RequestService requestService;
 
     @Autowired
+    private StudentAnswerDataService studentAnswerDataService;
+
+    @Autowired
     private AnswersService answersService;
+
+
+//    @Autowired
+//    private JavaMailSender sender;
+
 
     @GetMapping("/view/{Admin_Id}")
     public ModelAndView logGet(@PathVariable Integer Admin_Id, ModelMap model){
@@ -252,6 +262,18 @@ public class TestController {
         int totalMarks=answersService.getTotalMarks(G_Student_Id,G_Question_Data_Id);
         int studentMarks=answersService.getStudentMarks(G_Student_Id,G_Question_Data_Id);
 
+
+        StudentAnswerData sadata=new StudentAnswerData();
+        sadata.setNumberOfQuestions(numberOfQuestions);
+        sadata.setStudentName(studentService.getStudentFullName(G_Student_Id));
+        sadata.setStudentMarks(studentMarks);
+        sadata.setTotalMarks(totalMarks);
+        sadata.setUnAnsweredQuestions(unAnsweredQuestions);
+        sadata.setQuestionDataId(G_Question_Data_Id);
+
+
+        studentAnswerDataService.saveStudentData(sadata);
+
         model.addAttribute("numberOfQuestions",numberOfQuestions);
         model.addAttribute("unAnsweredQuestions",unAnsweredQuestions);
         model.addAttribute("incorrectQuestions",incorrectQuestions);
@@ -260,4 +282,38 @@ public class TestController {
 
         return new ModelAndView("ViewMarks");
     }
+
+    @GetMapping("/studentTestData/{questionDataID}")
+    public ModelAndView viewStudentTestData(@PathVariable Integer questionDataID,ModelMap model ){
+
+        List <StudentAnswerData> studentAnswerDataList=new LinkedList<StudentAnswerData>();
+        studentAnswerDataList=studentAnswerDataService.getStudentAnswersData(questionDataID);
+        model.addAttribute("list",studentAnswerDataList);
+     return new ModelAndView("ViewStudentMarksData");
+    }
+
+//    @GetMapping("/sendmail")
+//    public ModelAndView sendmail(){
+//        try {
+//            sendEmail();
+//        }catch(Exception ex) {
+//
+//        }
+//        return new ModelAndView("successTest");
+//    }
+//
+//
+//    private void sendEmail() throws Exception{
+//        MimeMessage message = sender.createMimeMessage();
+//        MimeMessageHelper helper = new MimeMessageHelper(message);
+//
+//        helper.setTo("sasmithachandanaproject@gmail.com");
+//        helper.setText("How are you?");
+//        helper.setSubject("Hi");
+//
+//        sender.send(message);
+//    }
+
+
+
 }

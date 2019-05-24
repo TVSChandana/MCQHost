@@ -21,4 +21,11 @@ public interface StudentRepository extends JpaRepository<Student,Integer> {
 
     @Query(value = "SELECT  ID,first_name,last_name,Request_Id  FROM Student_Table t Join Request_Table r  on t.ID=r.Student_Id WHERE r.Request_status=:i and r.Admin_Id=:loggedUserId",nativeQuery = true)
     List<StudentRequestData> getStudentFollowerData(@Param("i") Integer i, @Param("loggedUserId") Integer loggedUserId);
+
+    @Query(value = "SELECT  first_name  FROM Student_Table  WHERE ID=:g_student_id",nativeQuery = true)
+    String getStudentFirstName(@Param("g_student_id") Integer g_student_id);
+
+    @Query(value = "SELECT  last_name  FROM Student_Table  WHERE ID=:g_student_id",nativeQuery = true)
+    String getStudentLastName(@Param("g_student_id") Integer g_student_id);
+
 }

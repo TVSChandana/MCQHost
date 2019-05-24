@@ -16,4 +16,5 @@ public interface StudentService {
 
     List<StudentRequestData> getStudentFollowerData(int i, int loggedUserId);
 
+    String getStudentFullName(int g_student_id);
 }

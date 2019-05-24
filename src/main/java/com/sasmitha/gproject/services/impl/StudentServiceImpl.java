@@ -39,4 +39,9 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentRequestData> getStudentFollowerData(int i, int loggedUserId) {
         return studentRepository.getStudentFollowerData(i,loggedUserId);
     }
+
+    @Override
+    public String getStudentFullName(int g_student_id) {
+        return studentRepository.getStudentFirstName(g_student_id)+" "+studentRepository.getStudentLastName(g_student_id);
+    }
 }
