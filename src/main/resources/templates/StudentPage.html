@@ -67,27 +67,27 @@
                     </div>
                     <div class="main-menu">
                         <ul>
-                            <li class="active"><a href="index.html">home</a></li>
-                            <li><a href="about.html">about us</a></li>
-                            <li><a href="job-category.html">category</a></li>
-                            <li><a href="#">blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog-home.html">Blog Home</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
+                            <li class="active"><a th:href="@{/user/Logdata}">home</a></li>
+                            <li><a href="about.html">about</a></li>
+                            <!--<li><a href="job-category.html">category</a></li>-->
+                            <!--<li><a href="#">blog</a>-->
+                                <!--<ul class="sub-menu">-->
+                                    <!--<li><a href="blog-home.html">Blog Home</a></li>-->
+                                    <!--<li><a href="blog-details.html">Blog Details</a></li>-->
+                                <!--</ul>-->
                             </li>
-                            <li><a href="contact-us.html">contact</a></li>
-                            <li><a href="#">pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="job-search.html">Job Search</a></li>
-                                    <li><a href="job-single.html">Job Single</a></li>
-                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
-                                </ul>
-                            </li>
+                            <!--<li><a href="contact-us.html">contact</a></li>-->
+                            <!--<li><a href="#">pages</a>-->
+                                <!--<ul class="sub-menu">-->
+                                    <!--<li><a href="job-search.html">Job Search</a></li>-->
+                                    <!--<li><a href="job-single.html">Job Single</a></li>-->
+                                    <!--<li><a href="pricing-plan.html">Pricing Plan</a></li>-->
+                                    <!--<li><a href="elements.html">Elements</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
                             <li class="menu-btn">
-                                <a href="#" class="login">log in</a>
-                                <a href="#" class="template-btn">sign up</a>
+                                <!--<a href="#" class="login">log in</a>-->
+                                <a href="#" class="template-btn">Log out</a>
                             </li>
                         </ul>
                     </div>
@@ -137,7 +137,9 @@
                                                 <img src=""  alt="" th:case="0">
                                             </div>
                                             <div class="desc" th:switch="${divStatus}">
-                                                <h5 th:case="1"><a href="#">[[${name}]]</a></h5>
+                                                <h5 th:case="1"><a href="#">[[${name}]]</a>
+                                                    <p class="date">[[${occupationData}]]</p>
+                                                </h5>
                                                 <h5 th:case="0"><a href="#"></a></h5>
                                                 <!--<p class="date">December 4, 2017 at 3:12 pm </p>-->
                                                 <!--<p class="comment">-->
@@ -176,7 +178,7 @@
                                             </div>
                                             <div class="desc">
                                                 <h5><a href="#">[[${count.getfirst_name()}]]  [[${count.getlast_name()}]]</a></h5>
-                                                <p class="date">here goes the person data</p>
+                                                <p class="date">[[${count.getOccupation_data()}]]</p>
                                                 <!--<p class="comment">-->
                                                 <!--Never say goodbye till the end comes!-->
                                                 <!--</p>-->
@@ -184,8 +186,6 @@
                                         </div>
                                         <div class="reply-btn">
                                             <a  th:onclick="' window.location.href=\'/user/cancelRequest/' + ${count.getRequest_Id()} + '\''" class="btn-reply text-uppercase">Cancel</a>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@
                                             </div>
                                             <div class="desc">
                                                 <h5><a href="#">[[${count.getfirst_name()}]]  [[${count.getlast_name()}]]</a></h5>
-                                                <p class="date">here goes the person data</p>
+                                                <p class="date">[[${count.getOccupation_data()}]]</p>
                                                 <!--<p class="comment">-->
                                                 <!--Never say goodbye till the end comes!-->
                                                 <!--</p>-->

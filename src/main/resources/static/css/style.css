@@ -1684,7 +1684,7 @@ input:focus, textarea:focus {
 }
 
 .single-widget {
-    border: 1px solid #eee;
+    border: 1px solid #777777;
     padding: 40px 30px;
     margin-bottom: 30px
 }

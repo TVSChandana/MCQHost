@@ -27,6 +27,19 @@
     <title>Welcome home page</title>
 
 
+
+
+    <style>
+
+        .modal {
+            background-image: url("https://media.giphy.com/media/3ohhwrc9cS3agj4afC/giphy.gif");
+          width: auto;
+          background-size: 100%;
+        }
+
+    </style>
+
+
 </head>
 <body>
 
@@ -54,15 +67,15 @@
                 <div class="main-menu">
                     <ul>
                         <li class="active"><a th:href="@{/user/Logdata}">home</a></li>
-                        <li><a href="about.html">about us</a></li>
-                        <li><a href="job-category.html">category</a></li>
-                        <li><a href="#">blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog-home.html">Blog Home</a></li>
-                                <li><a href="blog-details.html">Blog Details</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact-us.html">contact</a></li>
+                        <li><a href="about.html">about</a></li>
+                        <!--<li><a href="job-category.html">category</a></li>-->
+                        <!--<li><a href="#">blog</a>-->
+                            <!--<ul class="sub-menu">-->
+                                <!--<li><a href="blog-home.html">Blog Home</a></li>-->
+                                <!--<li><a href="blog-details.html">Blog Details</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                        <!--<li><a href="contact-us.html">contact</a></li>-->
                         <li><a href="#">Login</a>
                             <ul class="sub-menu">
                                 <li><a href="#" onclick="document.getElementById('id01').style.display='block'" >Admin Login</a></li>
@@ -185,7 +198,7 @@
     <form class="modal-content animate"action="#" th:action="@{/user/login}" th:object="${user}" method="POST">
         <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <!--<img src="https://previews.123rf.com/images/ammentorp/ammentorp1610/ammentorp161000226/64925405-young-businessman-using-laptop-computer-in-office-young-male-executive-working-on-laptop-at-his-desk.jpg" alt="Avatar" class="avatar">-->
+            <!--<img src="https://4.bp.blogspot.com/-6LUFeou1vJM/W3U0KMzAtqI/AAAAAAAADYM/NaNjmPqLwOYY5eYpkQ6dZ_Vr63HjjBf9gCLcBGAs/s1600/man-working-laptop.gif" alt="Avatar" class="avatar">-->
         </div>
 
         <div class="container">
@@ -230,6 +243,8 @@
             <label ><b>Email: </b></label>
             <input type="text" th:field="*{email}" />
 
+            <label ><b>Occupation Data: </b></label>
+            <input type="text" th:field="*{occupationData}" />
 
             <label ><b>Password: </b></label>
             <input type="password" th:field="*{password}" />

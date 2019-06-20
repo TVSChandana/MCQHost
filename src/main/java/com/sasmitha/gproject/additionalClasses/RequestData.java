@@ -5,6 +5,7 @@ public interface RequestData {
    String getfirst_name();
    String getlast_name();
    Integer getRequest_Id();
+   String getOccupation_data();
 
 
 }

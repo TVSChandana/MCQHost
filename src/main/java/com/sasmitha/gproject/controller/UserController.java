@@ -223,6 +223,9 @@ public class UserController extends HttpServlet {
         String name=suser.getFirstName()+" "+suser.getLastName();
         model.addAttribute("name",name);
 
+        String occupationData=suser.getOccupationData();
+        model.addAttribute("occupationData",occupationData);
+
 
 
         int loggedStudentId=studentService.getStudentId(loggedStudentName);

@@ -59,6 +59,7 @@ img.avatar {
 }
 
 .container {
+    border-radius:10px;
     padding: 16px;
 }
 
@@ -85,11 +86,12 @@ span.psw {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #ffffff;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     /*border: 5px solid #888;*/
     width: 50%; /* Could be more or less, depending on screen size */
     /*background-image:url("https://images-na.ssl-images-amazon.com/images/I/91%2B2ScsOxkL._SL1500_.jpg");*/
+    border-radius: 10px;
 }
 
 /* The Close Button (x) */

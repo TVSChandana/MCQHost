@@ -21,8 +21,19 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    public String getOccupationData() {
+        return occupationData;
+    }
+
+    public void setOccupationData(String occupationData) {
+        this.occupationData = occupationData;
+    }
+
     @Column(name = "email")
     private String email;
+
+    @Column(name = "occupation_data")
+    private String occupationData;
 
     public String getConPassword() {
         return conPassword;

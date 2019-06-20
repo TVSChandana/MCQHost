@@ -22,6 +22,31 @@
     <link href="../static/css/nice-select.css" th:href="@{/css/nice-select.css}" rel="stylesheet" />
     <link href="../static/css/animate-3.7.0.css" th:href="@{/css/animate-3.7.0.css}" rel="stylesheet" />
     <link href="../static/css/logstyle.css" th:href="@{/css/logstyle.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+
+    <style>
+        #container {
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            background: #333;
+        }
+        #name {
+            width: 100%;
+            text-align: -webkit-center;
+            color: white;
+            font-size: 25px;
+            line-height: 50px;
+        }
+    </style>
+
+
+
+
+
+
 </head>
 <body>
 <!-- Preloader Starts -->
@@ -63,27 +88,12 @@
                     </div>
                     <div class="main-menu">
                         <ul>
-                            <li class="active"><a href="index.html">home</a></li>
-                            <li><a href="about.html">about us</a></li>
-                            <li><a href="job-category.html">category</a></li>
-                            <li><a href="#">blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog-home.html">Blog Home</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-us.html">contact</a></li>
-                            <li><a href="#">pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="job-search.html">Job Search</a></li>
-                                    <li><a href="job-single.html">Job Single</a></li>
-                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
-                                </ul>
-                            </li>
+                            <li class="active"><a th:href="@{/user/Logdata}">home</a></li>
+                            <li><a href="about.html">about</a></li>
+                            <li><a th:href="@{/user/logSuccess}">Test Management</a></li>
+
                             <li class="menu-btn">
-                                <a href="#" class="login">log in</a>
-                                <a href="#" class="template-btn">sign up</a>
+                                <a href="#" class="template-btn">Log out</a>
                             </li>
                         </ul>
                     </div>
@@ -161,17 +171,30 @@
                                 <h5 class="text-uppercase pb-80">[[${acceptedlistSize}]] Followers </h5>
                                 <br>
                                 <div class="comment-list">
-                                    <div class="single-comment justify-content-between d-flex" th:each="count:${acceptedlist}">
+                                    <div class="single-comment justify-content-between d-flex" th:each="count:${acceptedlist}" on="profilePic()">
                                         <div class="user justify-content-between d-flex">
                                             <div class="thumb">
-                                                <img src="../static/images/c1.jpg" th:src="@{/images/c2.jpg}" alt="">
+                                                <!--<img src="../static/images/c1.jpg" th:src="@{/images/c2.jpg}" alt="">-->
+                                                <div id="container">
+                                                    <div id="name">
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="desc">
                                                 <h5><a href="#">[[${count.getfirst_name()}]]  [[${count.getlast_name()}]]</a></h5>
-                                                <p class="date">here goes the person data</p>
+                                                <p class="date" onload="profilePic()">here goes the person data</p>
                                                 <!--<p class="comment">-->
                                                 <!--Never say goodbye till the end comes!-->
                                                 <!--</p>-->
+                                                <script>
+                                                    function profilePic() {
+                                                        var name = "[[${count.getfirst_name()}]]";
+                                                        var lastname = "[[${count.getlast_name()}]]";
+                                                        var initials = name.charAt(0).toUpperCase() + "" + lastname.charAt(0).toUpperCase();
+                                                        document.getElementById("name").innerHTML = initials;
+                                                    }
+                                                </script>
+
                                             </div>
                                         </div>
                                         <div class="reply-btn">
@@ -387,6 +410,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../static/js/vendor/jquery.nice-select.min.js" th:src="@{/js/vendor/jquery.nice-select.min.js}" ></script>
 <script src="../static/js/vendor/ion.rangeSlider.js" th:src="@{/js/vendor/ion.rangeSlider.js}" ></script>
 <script src="../static/js/main.js" th:src="@{/js/main.js}" ></script>
+
+
 
 </body>
 </html>
