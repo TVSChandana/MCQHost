@@ -11,4 +11,6 @@ public interface StudentAnswerDataService {
 
     List<StudentAnswerData> getStudentAnswersData(Integer questionDataID);
 
+    int getStudentTestStatusCount(int g_student_id, int selectedQuestionDataId);
+
 }

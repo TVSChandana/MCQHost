@@ -2,6 +2,7 @@ package com.sasmitha.gproject.services.impl;
 
 import com.sasmitha.gproject.model.Question;
 import com.sasmitha.gproject.model.QuestionData;
+import com.sasmitha.gproject.model.QuestionDataStatus;
 import com.sasmitha.gproject.repositories.QuestionDataRepository;
 import com.sasmitha.gproject.repositories.QuestionRepository;
 import com.sasmitha.gproject.services.QuestionService;
@@ -34,6 +35,13 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<QuestionData> getLoggedUserQuestioData(String userName) {
         List<QuestionData> list=questionDataRepository.getLoggedUserQuestioData(userName);
+        return list;
+
+    }
+
+    @Override
+    public List<QuestionDataStatus> getLoggedUserQuestionDataAndStatus(String userName) {
+        List<QuestionDataStatus> list=questionDataRepository.getLoggedUserQuestionDataAndStatus(userName);
         return list;
 
     }

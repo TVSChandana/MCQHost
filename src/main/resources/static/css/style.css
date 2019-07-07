@@ -797,6 +797,12 @@ input:focus, textarea:focus {
     background: #00afed
 }
 
+.single-job .job-btn .job-btn2, .single-job .job-btn .job-btn2, .single-job .job-btn .job-btn3, .single-job .job-btn .job-btn4 {
+    margin-bottom: 10px;
+    display: block;
+    background: #ed6728
+}
+
 .single-job .job-btn .job-btn1:hover, .single-job .job-btn .job-btn2:hover, .single-job .job-btn .job-btn3:hover, .single-job .job-btn .job-btn4:hover {
     background: #222
 }

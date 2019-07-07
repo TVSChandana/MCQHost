@@ -1,9 +1,6 @@
 package com.sasmitha.gproject.controller;
 
-import com.sasmitha.gproject.model.Answers;
-import com.sasmitha.gproject.model.Question;
-import com.sasmitha.gproject.model.QuestionData;
-import com.sasmitha.gproject.model.StudentAnswerData;
+import com.sasmitha.gproject.model.*;
 import com.sasmitha.gproject.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
@@ -14,7 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -50,6 +52,9 @@ public class TestController {
     int G_Answer_Status;
     int G_Student_mark;
 
+    String startTime;
+
+
 
     @Autowired
     private UserServices userServices;
@@ -76,7 +81,13 @@ public class TestController {
 
 
     @GetMapping("/view/{Admin_Id}")
-    public ModelAndView logGet(@PathVariable Integer Admin_Id, ModelMap model){
+    public ModelAndView logGet(@PathVariable Integer Admin_Id, ModelMap model, HttpServletRequest request, HttpServletResponse response){
+
+        HttpSession session=request.getSession(false);
+        String StudentName = (String) session.getAttribute("loggedStudentName");
+        int studentId=studentService.getStudentId(StudentName);
+        G_Student_Id=studentId;
+
 
         String adminUserName=userServices.getAdminUserName(Admin_Id);
 
@@ -85,7 +96,42 @@ public class TestController {
 
         List<QuestionData> list=new LinkedList<QuestionData>();
         list=questionService.getLoggedUserQuestioData(adminUserName);
-        model.addAttribute("list",list);
+
+        List<QuestionDataStatus> Lastlist=new LinkedList<QuestionDataStatus>();
+
+
+        for(int i=0;i<list.size();i++){
+
+
+
+            QuestionDataStatus qs=new QuestionDataStatus();
+            qs.setCreatedDate(list.get(i).getCreatedDate());
+            qs.setNumberOfQuestions(list.get(i).getNumberOfQuestions());
+            qs.setQuestionDataID(list.get(i).getQuestionDataID());
+            qs.setSetID(list.get(i).getSetID());
+            qs.setTest_Password(list.get(i).getTest_Password());
+            qs.setTestName(list.get(i).getTestName());
+            qs.setTestType(list.get(i).getTestType());
+            qs.setUserID(list.get(i).getUserID());
+
+            int question_data_id=list.get(i).getQuestionDataID();
+            int count=studentAnswerDataService.getStudentTestStatusCount(G_Student_Id,question_data_id);
+         if(count>0){
+            qs.setStudentStatus(1);
+         }else{
+            qs.setStudentStatus(0);
+         }
+
+         if(qs.getSetID()==0){
+             //do nothing ,Do not add the object to the Lastlist
+         }else{
+             Lastlist.add(qs);
+         }
+
+        }
+
+        model.addAttribute("list",Lastlist);
+
 
 
 
@@ -107,18 +153,23 @@ public class TestController {
 
 
     @PostMapping("/try")
-    public ModelAndView viewQuestions(QuestionData questionData, ModelMap model, HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView viewQuestions(QuestionData questionData, ModelMap model){
         String a=questionData.getTest_Password();
         String b=questionService.getQuestionData(questionData.getQuestionDataID()).getTest_Password();
         selectedQuestionDataId=questionData.getQuestionDataID();
 
-        HttpSession session=request.getSession(false);
-        String StudentName = (String) session.getAttribute("loggedStudentName");
-        int studentId=studentService.getStudentId(StudentName);
-        G_Student_Id=studentId;
+//        HttpSession session=request.getSession(false);
+//        String StudentName = (String) session.getAttribute("loggedStudentName");
+//        int studentId=studentService.getStudentId(StudentName);
+//        G_Student_Id=studentId;
 
 
         if(a.equals(b)){
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String time1=dtf.format(now);
+            startTime=time1;
+
             return new ModelAndView("redirect:map");
         }else{
             return new ModelAndView("redirect:map");
@@ -127,7 +178,21 @@ public class TestController {
     }
 
     @GetMapping("/map")
-    public ModelAndView markGet( ModelMap model){
+    public ModelAndView markGet( ModelMap model) throws ParseException {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String endTime = dtf.format(now);
+
+
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+        Date date1 = format.parse(startTime);
+        Date date2 = format.parse(endTime);
+        long difference = date2.getTime() - date1.getTime();
+        Long minDiff=(difference/1000)/60;
+
+        if(minDiff>=4) {
+            return new ModelAndView("redirect:answerViwe");
+        }
 
         ArrayList<Question> array=new ArrayList<>();
         array=questionService.viewAllQuestions(selectedQuestionDataId);
@@ -270,6 +335,7 @@ public class TestController {
         sadata.setTotalMarks(totalMarks);
         sadata.setUnAnsweredQuestions(unAnsweredQuestions);
         sadata.setQuestionDataId(G_Question_Data_Id);
+        sadata.setStudentId(G_Student_Id);
 
 
         studentAnswerDataService.saveStudentData(sadata);

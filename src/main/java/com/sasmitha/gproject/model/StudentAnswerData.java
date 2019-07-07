@@ -8,13 +8,25 @@ import javax.persistence.*;
 @Table(name ="Student_Answer_Table")
 public class StudentAnswerData {
 
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO )
     @Column(name = "Id")
     private Integer Id;
 
+    public Integer getStudentId() {
+        return StudentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        StudentId = studentId;
+    }
+
     @Column(name = "Student_Name")
     private String StudentName;
+
+    @Column(name = "Student_Id")
+    private Integer StudentId;
 
     public Integer getId() {
         return Id;
