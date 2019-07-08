@@ -129,6 +129,7 @@
             <div class="col-lg-12">
 
 
+<div >
                 <div class="single-job mb-4 d-lg-flex justify-content-between" th:each="count:${list}">
                     <div class="job-text">
                         <ul class="mt-4">
@@ -146,51 +147,50 @@
                     <div class="job-img align-self-center">
                         <img src="../static/images/mcq_two.png" th:src="@{/images/mcq_two.png}" alt="job">
                     </div>
+
                     <div class="job-btn align-self-center" th:switch="${count.studentStatus}">
-                    <p th:case="0"><a  class="third-btn job-btn1"  onclick="document.getElementById('id03').style.display='block'">Try</a></p>
+                    <p th:case="0">  <a class="third-btn job-btn1" th:onclick="'window.location.href=\'/test/try/' + ${count.questionDataID} + '\''">Try Test</a></p>
                     <p th:case="1"> <a  class="third-btn job-btn2" >You Have Already tried this</a></p>
+                    </div>
 
 
 
+                <!--<div id="id03" class="modal">-->
+                    <!--<form class="modal-content animate" action="#" th:action="@{/test/try}" th:object="${questionData}" method="POST">-->
+                        <!--<div class="imgcontainer">-->
+                            <!--<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>-->
+                            <!--<img src="https://www.shareicon.net/download/2016/07/06/105077_document_512x512.png" alt="Avatar" class="avatar">-->
+                        <!--</div>-->
 
-                </div>
+                        <!--<div class="container">-->
 
-                <div id="id03" class="modal">
-                    <form class="modal-content animate" action="#" th:action="@{/test/try}" th:object="${questionData}" method="POST">
-                        <div class="imgcontainer">
-                            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-                            <img src="https://www.shareicon.net/download/2016/07/06/105077_document_512x512.png" alt="Avatar" class="avatar">
-                        </div>
+                            <!--<p>You Have 1 hour time </p>-->
+                            <!--<p>You cannot go back to the previous question </p>-->
+                            <!--<p>Insert the test Password given to you </p>-->
 
-                        <div class="container">
+                            <!--<input type="hidden" id="questionDataID" name="questionDataID" th:value="${count.getQuestionDataID()}">-->
 
-                            <p>You Have 1 hour time </p>
-                            <p>You cannot go back to the previous question </p>
-                            <p>Insert the test Password given to you </p>
-
-                            <input type="hidden" id="questionDataID" name="questionDataID" th:value="${count.questionDataID}">
-
-                            <label ><b>Test Password: </b></label>
-                            <input type="text" th:field="*{test_Password}" />
+                            <!--<label ><b>Test Password: </b></label>-->
+                            <!--<input type="text" th:field="*{test_Password}" />-->
 
 
-                            <button type="submit">Next</button>
+                            <!--<button type="submit">Next</button>-->
 
-                        </div>
+                        <!--</div>-->
 
-                        <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
-                        </div>
-                    </form>
+                        <!--<div class="container" style="background-color:#f1f1f1">-->
+                            <!--<button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>-->
+                        <!--</div>-->
+                    <!--</form>-->
 
-                </div>
+                <!--</div>-->
 
             </div>
 
 
         </div>
     </div>
-
+        </div>
     </div>
 </section>
 <!-- Jobs Area End -->

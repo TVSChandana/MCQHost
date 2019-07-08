@@ -1190,6 +1190,10 @@ input:focus, textarea:focus {
     margin-left: 10px
 }
 
+.footer-area .template-btn2 {
+    margin-left: 0px
+}
+
 @media (max-width: 575.98px) {
     .footer-area .template-btn {
         margin-left: 0;
@@ -3411,6 +3415,49 @@ h6 {
 .template-btn {
     color: #fff !important;
     background: #ff9902;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    padding: 15px 30px !important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all 0.5s
+}
+
+.template-btn2 {
+    color: #fff !important;
+    background: #ff9902;
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    padding: 15px 30px !important;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all 0.5s
+}
+
+.template-btn3 {
+    margin-bottom: 100px;
+    margin-left: 970px;
+    width: 250px;
+    color: #fff !important;
+    background: #1f920b;
     font-family: "Open Sans", sans-serif;
     text-transform: uppercase;
     font-size: 14px;

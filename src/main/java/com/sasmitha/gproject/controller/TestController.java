@@ -152,33 +152,37 @@ public class TestController {
     }
 
 
-    @PostMapping("/try")
-    public ModelAndView viewQuestions(QuestionData questionData, ModelMap model){
-        String a=questionData.getTest_Password();
-        String b=questionService.getQuestionData(questionData.getQuestionDataID()).getTest_Password();
-        selectedQuestionDataId=questionData.getQuestionDataID();
+    @GetMapping("/try/{questiondataid}")
+    public ModelAndView viewQuestions(@PathVariable Integer questiondataid,QuestionData questionData, ModelMap model){
+//        String a= questionData.getTest_Password();
+//        String b=questionService.getQuestionData(questionData.getQuestionDataID()).getTest_Password();
 
+        String a="a";
+        String b="b";
+
+//        selectedQuestionDataId=questionData.getQuestionDataID();
+        selectedQuestionDataId=questiondataid;
 //        HttpSession session=request.getSession(false);
 //        String StudentName = (String) session.getAttribute("loggedStudentName");
 //        int studentId=studentService.getStudentId(StudentName);
 //        G_Student_Id=studentId;
 
 
-        if(a.equals(b)){
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
-            String time1=dtf.format(now);
-            startTime=time1;
-
-            return new ModelAndView("redirect:map");
-        }else{
-            return new ModelAndView("redirect:map");
-        }
+//        if(a.equals(b)){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String time1=dtf.format(now);
+        startTime=time1;
+//
+//            return new ModelAndView("redirect:map");
+//        }else{
+            return new ModelAndView("redirect:/test/map");
+//        }
 
     }
 
     @GetMapping("/map")
-    public ModelAndView markGet( ModelMap model) throws ParseException {
+    public ModelAndView markGet( ModelMap model) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String endTime = dtf.format(now);
@@ -189,6 +193,7 @@ public class TestController {
         Date date2 = format.parse(endTime);
         long difference = date2.getTime() - date1.getTime();
         Long minDiff=(difference/1000)/60;
+
 
         if(minDiff>=4) {
             return new ModelAndView("redirect:answerViwe");

@@ -133,7 +133,7 @@
                                     <div class="single-comment justify-content-between d-flex">
                                         <div class="user justify-content-between d-flex">
                                             <div class="thumb" th:switch="${divStatus}">
-                                                <img src="../static/images/c4.jpg" th:src="@{/images/c4.jpg}" alt="" th:case="1">
+                                                <img src="../static/images/c4.jpg" th:src="@{/images/c8.jpg}" alt="" th:case="1">
                                                 <img src=""  alt="" th:case="0">
                                             </div>
                                             <div class="desc" th:switch="${divStatus}">
@@ -174,7 +174,7 @@
                                     <div class="single-comment justify-content-between d-flex" th:each="count:${pendinglist}">
                                         <div class="user justify-content-between d-flex">
                                             <div class="thumb">
-                                                <img src="../static/images/c1.jpg" th:src="@{/images/c1.jpg}" alt="">
+                                                <img src="../static/images/c6.jpg" th:src="@{/images/c6.jpg}" alt="">
                                             </div>
                                             <div class="desc">
                                                 <h5><a href="#">[[${count.getfirst_name()}]]  [[${count.getlast_name()}]]</a></h5>
@@ -204,7 +204,7 @@
                                     <div class="single-comment justify-content-between d-flex" th:each="count:${acceptedlist}">
                                         <div class="user justify-content-between d-flex">
                                             <div class="thumb">
-                                                <img src="../static/images/c1.jpg" th:src="@{/images/c2.jpg}" alt="">
+                                                <img src="../static/images/c7.jpg" th:src="@{/images/c7.jpg}" alt="">
                                             </div>
                                             <div class="desc">
                                                 <h5><a href="#">[[${count.getfirst_name()}]]  [[${count.getlast_name()}]]</a></h5>
@@ -377,7 +377,7 @@
                         <p class="mb-4">You can trust us. we only send promo offers, not a single.</p>
                         <form action="#">
                             <input type="email" placeholder="Your email here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email here'" required>
-                            <button type="submit" class="template-btn">subscribe now</button>
+                            <button type="submit" class="template-btn2">subscribe now</button>
                         </form>
                     </div>
                 </div>
